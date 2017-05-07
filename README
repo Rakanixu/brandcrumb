@@ -1,0 +1,43 @@
+The solution is written in Golang, following RESTful principles. It tries to follow the go way of writting code.
+The persistance design is an abstraction of the tecnology to use, so it can be easily replace.
+The persistance implementation follows a relational database style syntax,
+and every model is stored in is own "table".
+
+project structure:
+
+-db                 --> persistance
+  -fish             --> persistance design for fish model
+    - inmemory      --> persistance implementation for fish model
+  -tank             --> persistance design for tank model
+     - inmemory     --> persistance implementation for tank model
+-handlers           --> API handlers
+-models             --> data models
+  -fish             --> fish data model
+  -tank             --> tank data model
+
+Only unit tests for tank and fish in memory implementation. Handlers would follow the same pattern.
+End-to-end test can be implemented by generating http request and consume the API.
+
+Why there is not src folder?
+This is a go project, structures from Java or Python projects may not fit nicely with golang principles.
+
+
+Run with docker (recommended):
+Build image locally: docker build -t brandcrumb_pablo .
+Run:                 docker run brandcrumb_pablo
+
+
+Run binary:
+I crossed compiled source code so can be executed in different architectures,
+choose the one that fits your arquitecture.
+
+./linux_x86 (tested on ubuntu 16.04 64 bits)
+
+Run source code (requires go installed):
+  go get -t -d -v ./...
+  go main.go
+
+
+
+
+
